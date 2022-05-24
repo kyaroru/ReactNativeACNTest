@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, StyleSheet, ViewPropTypes} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {Colors, Font} from 'themes';
 
 const DEFAULT_FONT_SIZE = 'm';

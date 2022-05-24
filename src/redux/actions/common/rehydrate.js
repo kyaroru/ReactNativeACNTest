@@ -1,4 +1,4 @@
-const NAME = 'COMMON';
+const NAME = 'common';
 
 export const FINISH_REHYDRATE = `${NAME}/FINISH_REHYDRATE`;
 

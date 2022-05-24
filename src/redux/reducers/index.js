@@ -1,5 +1,7 @@
 import common from './common';
+import categories from './categories';
 
 export default {
-  COMMON: common,
+  common,
+  categories,
 };

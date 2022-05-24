@@ -14,7 +14,7 @@ const NavBar = props => {
           onPress={props.onLeftIconPress}>
           <Icon
             name={props.iconLeft || 'chevron-left'}
-            size={props.iconSize || normalize(30)}
+            size={props.iconSize || normalize(25)}
             color={props.iconLeftColor || props.iconColor}
           />
         </TouchableOpacity>
@@ -38,7 +38,7 @@ const NavBar = props => {
           onPress={props.onRightIconPress}>
           <Icon
             name={props.iconRight || 'check'}
-            size={props.iconSize || normalize(30)}
+            size={props.iconSize || normalize(25)}
             color={props.iconRightColor || props.iconColor}
           />
         </TouchableOpacity>
@@ -50,20 +50,19 @@ const NavBar = props => {
 const styles = StyleSheet.create({
   navBar: {
     height: normalize(50),
-    width: getScreenWidth(),
+    width: '100%',
     paddingVertical: normalize(10),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: normalize(15),
   },
   iconLeft: {
     position: 'absolute',
-    left: normalize(10),
+    left: normalize(16),
   },
   iconRight: {
     position: 'absolute',
-    right: normalize(10),
+    right: normalize(16),
   },
   navTitle: {
     marginHorizontal: normalize(30),
