@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.white,
     borderRadius: normalize(15),
-    paddingVertical: normalize(3),
+    paddingVertical: Platform.OS === 'ios' ? normalize(3) : 0,
     paddingHorizontal: normalize(5),
   },
   input: {

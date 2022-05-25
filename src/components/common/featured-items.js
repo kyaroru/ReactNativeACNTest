@@ -6,6 +6,7 @@ import {normalize, getScreenWidth} from 'utils/size';
 import Card from '../card';
 import Label from '../text/label';
 import Space from './space';
+import FastImage from 'react-native-fast-image';
 
 const FlashSales = props => {
   const {title, items, type} = props;
@@ -18,8 +19,8 @@ const FlashSales = props => {
       <Space vertical={normalize(10)} />
       <View style={{flexDirection: 'row'}}>
         {items.map(i => (
-          <View style={{marginLeft: normalize(10)}}>
-            <Image
+          <View style={{marginLeft: normalize(10)}} key={i.id}>
+            <FastImage
               source={{uri: i.image}}
               style={{
                 width: imageWidth,

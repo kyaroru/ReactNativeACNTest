@@ -9,7 +9,7 @@ import {
   Button,
   FeaturedItems,
   Space,
-  Label,
+  CardItem,
 } from 'components';
 import {ScrollView, View, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -19,6 +19,7 @@ import Selectors from 'selectors';
 import Actions from 'actions';
 import {getScreenWidth, normalize} from 'utils/size';
 import FastImage from 'react-native-fast-image';
+import MasonryList from '@react-native-seoul/masonry-list';
 
 class Home extends Component {
   state = {
@@ -167,6 +168,56 @@ class Home extends Component {
         category: 'Smartphones',
       },
     ],
+    products: [
+      {
+        id: 1,
+        image: 'https://source.unsplash.com/1024x768/?plush',
+        title: 'Ready Stock - Large Plushie',
+        freeShipping: true,
+        price: 'RM121.50',
+        discount: '-35%',
+        rating: '4.5',
+        reviews: 173,
+        sold: '299 Sold',
+        location: 'China',
+      },
+      {
+        id: 2,
+        image: 'https://source.unsplash.com/1024x768/?luggage',
+        title: 'New travel luggage',
+        freeShipping: true,
+        price: 'RM249.90',
+        discount: '-15%',
+        rating: '4.7',
+        reviews: 200,
+        sold: '1299 Sold',
+        location: 'China',
+      },
+      {
+        id: 3,
+        image: 'https://source.unsplash.com/1024x768/?smartwatch',
+        title: 'Smart Watch',
+        freeShipping: false,
+        price: 'RM1200.00',
+        discount: '-20%',
+        rating: '4.9',
+        reviews: 150,
+        sold: '50 Sold',
+        location: 'China',
+      },
+      {
+        id: 4,
+        image: 'https://source.unsplash.com/1024x768/?sofa',
+        title: 'Sofa 3 seater modern',
+        freeShipping: true,
+        price: 'RM1500.00',
+        discount: '-15%',
+        rating: '4.7',
+        reviews: 2713,
+        sold: '899 Sold',
+        location: 'China',
+      },
+    ],
     width: getScreenWidth() - normalize(32),
   };
 
@@ -182,7 +233,7 @@ class Home extends Component {
 
   render() {
     const {categories} = this.props;
-    const {selectedCategory, icons} = this.state;
+    const {selectedCategory, icons, products} = this.state;
     const dummyText = 'Due to time constraint, this is not implemented';
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
@@ -208,7 +259,9 @@ class Home extends Component {
             />
           }
         />
-        <ScrollView style={styles.content}>
+        <Space horizontal={normalize(10)} />
+
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
           <CategoryPanel
             selected={selectedCategory}
             categories={categories}
@@ -235,12 +288,35 @@ class Home extends Component {
               items={this.state.saleItems}
               type="sales"
             />
-            <Space vertical={normalize(10)} />
+            <Space vertical={normalize(20)} />
             <FeaturedItems
               title="Best Sellers"
               items={this.state.bestSellers}
               type="ranking"
             />
+            <Space vertical={normalize(20)} />
+            <View
+              style={{
+                width: '100%',
+                flexDirection: 'row',
+              }}>
+              <MasonryList
+                data={products}
+                keyExtractor={item => item.id}
+                numColumns={2}
+                showsVerticalScrollIndicator={false}
+                renderItem={({item, i}) => <CardItem item={item} index={i} />}
+                refreshing={false}
+                loading={false}
+                onRefresh={() => {
+                  console.log('onRefresh');
+                }}
+                onEndReachedThreshold={0.1}
+                onEndReached={() => {
+                  console.log('load next');
+                }}
+              />
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>

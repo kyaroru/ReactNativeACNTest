@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, View} from 'react-native';
-import {Colors} from 'themes';
 import {normalize, getScreenWidth} from 'utils/size';
 import RoundIcon from './round-icon';
 

@@ -18,6 +18,7 @@ const Colors = {
   iconOverlay: 'rgba(50, 50, 50, 0.5)',
 
   selectedTag: 'rgba(215,215,215, 0.7)',
+  discountTag: 'rgba(254, 129, 109,0.3)',
 
   // icon colors
   icon1: '#ec6f86',
